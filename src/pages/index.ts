@@ -1,0 +1,6 @@
+export { default as CompanyTeamPage } from './CompanyTeamPage'
+export { default as AboutPage } from './AboutPage'
+export { default as HomePage } from './HomePage'
+export { default as JoinUsPage } from './JoinUsPage'
+export { default as NewsPage } from './NewsPage'
+export { default as CoreTechPage } from './CoreTechPage'

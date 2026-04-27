@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+/*
+  设计稿宽 750 + index.html flexible：documentElement.style.fontSize = 视口宽 / 10
+  因此 1rem = 视口宽/10px。稿上尺寸转 rem：设计稿 px ÷ 75 = rem
+  （例：稿 150px → 2rem；勿再写死 html { font-size }，会与 flexible 冲突）
+*/
+
+#root {
+  width: 100%;
+  min-height: 100dvh;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  background-color: #ffffff;
+  color: #1f1f1f;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
