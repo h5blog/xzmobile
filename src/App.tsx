@@ -1,19 +1,25 @@
-import { useEffect, useState } from 'react'
-import MobileFooter from './components/MobileFooter'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import MobileHeader from './components/MobileHeader'
-import { AboutPage, CompanyTeamPage, CoreTechPage, HomePage, JoinUsPage, NewsPage } from './pages'
-import NewsDetailPage1 from './pages/NewsDetailPage1'
-import NewsDetailPage2 from './pages/NewsDetailPage2'
-import NewsDetailPage3 from './pages/NewsDetailPage3'
-import NewsDetailPage4 from './pages/NewsDetailPage4'
-import NewsDetailPage5 from './pages/NewsDetailPage5'
-import JobDetailPage1 from './pages/JobDetailPage1'
-import JobDetailPage2 from './pages/JobDetailPage2'
-import JobDetailPage3 from './pages/JobDetailPage3'
-import JobDetailPage4 from './pages/JobDetailPage4'
-import JobDetailPage5 from './pages/JobDetailPage5'
-import JobDetailPage6 from './pages/JobDetailPage6'
+import ScrollToTopFab from './components/ScrollToTopFab'
+import { routePathFromHash, setHashFromRoutePath } from './lib/hashRoute'
+import HomePage from './pages/HomePage'
 import { rem750 as r } from './lib/rem750'
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const CompanyTeamPage = lazy(() => import('./pages/CompanyTeamPage'))
+const CoreTechPage = lazy(() => import('./pages/CoreTechPage'))
+const JoinUsPage = lazy(() => import('./pages/JoinUsPage'))
+const NewsPage = lazy(() => import('./pages/NewsPage'))
+const NewsDetailPage1 = lazy(() => import('./pages/NewsDetailPage1'))
+const NewsDetailPage2 = lazy(() => import('./pages/NewsDetailPage2'))
+const NewsDetailPage3 = lazy(() => import('./pages/NewsDetailPage3'))
+const NewsDetailPage4 = lazy(() => import('./pages/NewsDetailPage4'))
+const NewsDetailPage5 = lazy(() => import('./pages/NewsDetailPage5'))
+const JobDetailPage1 = lazy(() => import('./pages/JobDetailPage1'))
+const JobDetailPage2 = lazy(() => import('./pages/JobDetailPage2'))
+const JobDetailPage3 = lazy(() => import('./pages/JobDetailPage3'))
+const JobDetailPage4 = lazy(() => import('./pages/JobDetailPage4'))
+const JobDetailPage5 = lazy(() => import('./pages/JobDetailPage5'))
+const JobDetailPage6 = lazy(() => import('./pages/JobDetailPage6'))
 
 type PageKey =
   | 'home'
@@ -41,15 +47,15 @@ function pageFromPath(pathname: string): PageKey {
   if (pathname === '/news/3') return 'news-3'
   if (pathname === '/news/4') return 'news-4'
   if (pathname === '/news/5') return 'news-5'
-  if (pathname === '/join-us/1') return 'join-1'
-  if (pathname === '/join-us/2') return 'join-2'
-  if (pathname === '/join-us/3') return 'join-3'
-  if (pathname === '/join-us/4') return 'join-4'
-  if (pathname === '/join-us/5') return 'join-5'
-  if (pathname === '/join-us/6') return 'join-6'
+  if (pathname === '/join/1' || pathname === '/join-us/1') return 'join-1'
+  if (pathname === '/join/2' || pathname === '/join-us/2') return 'join-2'
+  if (pathname === '/join/3' || pathname === '/join-us/3') return 'join-3'
+  if (pathname === '/join/4' || pathname === '/join-us/4') return 'join-4'
+  if (pathname === '/join/5' || pathname === '/join-us/5') return 'join-5'
+  if (pathname === '/join/6' || pathname === '/join-us/6') return 'join-6'
   if (pathname === '/news') return 'news'
   if (pathname === '/about' || pathname === '/about-us') return 'about'
-  if (pathname === '/join-us' || pathname === '/join') return 'join-us'
+  if (pathname === '/join' || pathname === '/join-us') return 'join-us'
   if (pathname === '/team') return 'company-team'
   return 'home'
 }
@@ -57,7 +63,7 @@ function pageFromPath(pathname: string): PageKey {
 function navFromPage(page: PageKey): string {
   if (page === 'tech') return '核心技术'
   if (page === 'news' || page.startsWith('news-')) return '新闻中心'
-  if (page === 'about') return '关于我们'
+  if (page === 'about') return '公司简介'
   if (page === 'join-us' || page.startsWith('join-')) return '加入我们'
   if (page === 'company-team') return '创始团队'
   return '首页'
@@ -72,19 +78,19 @@ function pathFromPage(page: PageKey): string {
   if (page === 'news-4') return '/news/4'
   if (page === 'news-5') return '/news/5'
   if (page === 'about') return '/about'
-  if (page === 'join-us') return '/join-us'
-  if (page === 'join-1') return '/join-us/1'
-  if (page === 'join-2') return '/join-us/2'
-  if (page === 'join-3') return '/join-us/3'
-  if (page === 'join-4') return '/join-us/4'
-  if (page === 'join-5') return '/join-us/5'
-  if (page === 'join-6') return '/join-us/6'
+  if (page === 'join-us') return '/join'
+  if (page === 'join-1') return '/join/1'
+  if (page === 'join-2') return '/join/2'
+  if (page === 'join-3') return '/join/3'
+  if (page === 'join-4') return '/join/4'
+  if (page === 'join-5') return '/join/5'
+  if (page === 'join-6') return '/join/6'
   if (page === 'company-team') return '/team'
   return '/'
 }
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<PageKey>(() => pageFromPath(window.location.pathname))
+  const [currentPage, setCurrentPage] = useState<PageKey>(() => pageFromPath(routePathFromHash()))
   const [activeNav, setActiveNav] = useState('首页')
 
   useEffect(() => {
@@ -93,112 +99,72 @@ export default function App() {
   }, [currentPage])
 
   useEffect(() => {
-    const onPopState = () => {
-      setCurrentPage(pageFromPath(window.location.pathname))
+    const onHashChange = () => {
+      setCurrentPage(pageFromPath(routePathFromHash()))
     }
-    window.addEventListener('popstate', onPopState)
-    return () => window.removeEventListener('popstate', onPopState)
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
   return (
-    <div className="mx-auto w-full min-w-0" style={{ maxWidth: r(750) }}>
+    <div
+      className="mx-auto w-full min-w-0"
+      style={{ maxWidth: r(750), paddingTop: r(96) }}
+    >
       <MobileHeader
         active={activeNav}
         onNavigate={(item) => {
-          if (item === '首页') {
-            const target: PageKey = 'home'
-            setCurrentPage(target)
-            const path = pathFromPage(target)
-            if (window.location.pathname !== path) {
-              window.history.pushState(null, '', path)
-            }
-            return
-          }
-          if (item === '核心技术') {
-            const target: PageKey = 'tech'
-            setCurrentPage(target)
-            const path = pathFromPage(target)
-            if (window.location.pathname !== path) {
-              window.history.pushState(null, '', path)
-            }
-            return
-          }
-          if (item === '新闻中心') {
-            const target: PageKey = 'news'
-            setCurrentPage(target)
-            const path = pathFromPage(target)
-            if (window.location.pathname !== path) {
-              window.history.pushState(null, '', path)
-            }
-            return
-          }
-          if (item === '关于我们' || item === '公司简介') {
-            const target: PageKey = 'about'
-            setCurrentPage(target)
-            const path = pathFromPage(target)
-            if (window.location.pathname !== path) {
-              window.history.pushState(null, '', path)
-            }
-            return
-          }
-          if (item === '公司团队' || item === '创始团队') {
-            const target: PageKey = 'company-team'
-            setCurrentPage(target)
-            const path = pathFromPage(target)
-            if (window.location.pathname !== path) {
-              window.history.pushState(null, '', path)
-            }
-            return
-          }
-          if (item === '加入我们') {
-            const target: PageKey = 'join-us'
-            setCurrentPage(target)
-            const path = pathFromPage(target)
-            if (window.location.pathname !== path) {
-              window.history.pushState(null, '', path)
-            }
-            return
-          }
+          let target: PageKey = 'home'
+          if (item === '首页') target = 'home'
+          else if (item === '核心技术') target = 'tech'
+          else if (item === '新闻中心') target = 'news'
+          else if (item === '关于我们' || item === '公司简介') target = 'about'
+          else if (item === '公司团队' || item === '创始团队') target = 'company-team'
+          else if (item === '加入我们') target = 'join-us'
+          else return
+          setHashFromRoutePath(pathFromPage(target))
         }}
       />
 
-      {currentPage === 'join-us' ? (
-        <JoinUsPage />
-      ) : currentPage === 'about' ? (
-        <AboutPage />
-      ) : currentPage === 'join-1' ? (
-        <JobDetailPage1 />
-      ) : currentPage === 'join-2' ? (
-        <JobDetailPage2 />
-      ) : currentPage === 'join-3' ? (
-        <JobDetailPage3 />
-      ) : currentPage === 'join-4' ? (
-        <JobDetailPage4 />
-      ) : currentPage === 'join-5' ? (
-        <JobDetailPage5 />
-      ) : currentPage === 'join-6' ? (
-        <JobDetailPage6 />
-      ) : currentPage === 'tech' ? (
-        <CoreTechPage />
-      ) : currentPage === 'news' ? (
-        <NewsPage />
-      ) : currentPage === 'news-1' ? (
-        <NewsDetailPage1 />
-      ) : currentPage === 'news-2' ? (
-        <NewsDetailPage2 />
-      ) : currentPage === 'news-3' ? (
-        <NewsDetailPage3 />
-      ) : currentPage === 'news-4' ? (
-        <NewsDetailPage4 />
-      ) : currentPage === 'news-5' ? (
-        <NewsDetailPage5 />
-      ) : currentPage === 'company-team' ? (
-        <CompanyTeamPage />
-      ) : (
-        <HomePage />
-      )}
+      <Suspense fallback={null}>
+        {currentPage === 'join-us' ? (
+          <JoinUsPage />
+        ) : currentPage === 'about' ? (
+          <AboutPage />
+        ) : currentPage === 'join-1' ? (
+          <JobDetailPage1 />
+        ) : currentPage === 'join-2' ? (
+          <JobDetailPage2 />
+        ) : currentPage === 'join-3' ? (
+          <JobDetailPage3 />
+        ) : currentPage === 'join-4' ? (
+          <JobDetailPage4 />
+        ) : currentPage === 'join-5' ? (
+          <JobDetailPage5 />
+        ) : currentPage === 'join-6' ? (
+          <JobDetailPage6 />
+        ) : currentPage === 'tech' ? (
+          <CoreTechPage />
+        ) : currentPage === 'news' ? (
+          <NewsPage />
+        ) : currentPage === 'news-1' ? (
+          <NewsDetailPage1 />
+        ) : currentPage === 'news-2' ? (
+          <NewsDetailPage2 />
+        ) : currentPage === 'news-3' ? (
+          <NewsDetailPage3 />
+        ) : currentPage === 'news-4' ? (
+          <NewsDetailPage4 />
+        ) : currentPage === 'news-5' ? (
+          <NewsDetailPage5 />
+        ) : currentPage === 'company-team' ? (
+          <CompanyTeamPage />
+        ) : (
+          <HomePage />
+        )}
+      </Suspense>
 
-      <MobileFooter />
+      <ScrollToTopFab />
     </div>
   )
 }

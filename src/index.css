@@ -23,6 +23,12 @@ body {
   background-color: #ffffff;
   color: #1f1f1f;
   overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* 顶部栏与抽屉保持原样，不受全局行高影响（全站正文 1.6） */
+header {
+  line-height: normal;
 }
 
 a {

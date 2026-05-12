@@ -1,4 +1,5 @@
-import { figmaHome } from '../images/figmaHome'
+import NewsDetailBannerHero from '../components/NewsDetailBannerHero'
+import PageWithFooter from '../components/PageWithFooter'
 import { rem750 as r } from '../lib/rem750'
 
 function NewsDetailPage5() {
@@ -28,74 +29,67 @@ function NewsDetailPage5() {
   ]
 
   return (
+    <PageWithFooter>
     <main className="w-full bg-white" style={{ paddingBottom: r(48) }}>
-      <section className="relative w-full" style={{ height: r(178) }}>
-        <img src="/news-detail-hero.png" alt="" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#f96d01] via-[rgba(249,109,1,0.53)] to-transparent" />
-        
-      </section>
+      <NewsDetailBannerHero />
 
-      <section style={{ padding: `${r(32)} ${r(24)} 0` }}>
-        <h1 className="m-0 font-semibold text-black" style={{ fontSize: r(36), lineHeight: r(44) }}>
+      <section style={{ padding: `${r(32)} ${r(40)} 0` }}>
+        <h1 className="m-0 font-semibold text-black" style={{ fontSize: r(32), lineHeight: 1.6,paddingLeft: r(15) ,paddingRight: r(15) }}>
           AI加速可控核聚变商业化，新烛时代完成6000万元天使轮融资
         </h1>
         <div className="w-full" style={{ marginTop: r(16), height: r(2), backgroundColor: '#f96d01' }} />
 
-        <p className="m-0 text-black" style={{ marginTop: r(24), fontSize: r(24), lineHeight: r(36) }}>
+        <p className="m-0 text-justify text-black" style={{ marginTop: r(24), fontSize: r(24), lineHeight: 1.6 }}>
           近日，新烛时代宣布完成6000万元天使轮融资。本轮融资由中科创星、鼎峰科创联合领投，水木清华校友基金跟投，
           资金将主要用于核心技术研发、联合验证、平台建设及关键人才引进等，全力推动可控核聚变向商用化加速迈进。
         </p>
 
-        <div className="overflow-hidden" style={{ marginTop: r(24), height: r(340), borderRadius: r(6) }}>
-          <img src={figmaHome.banner} alt="" className="block h-full w-full object-cover" />
-        </div>
-
         <section style={{ marginTop: r(30) }}>
-          <h2 className="m-0 font-semibold text-[#f96d01]" style={{ fontSize: r(24), lineHeight: r(31) }}>
+          <h2 className="m-0 font-semibold text-[#f96d01]" style={{ fontSize: r(32), lineHeight: 1.6 }}>
             核聚变商业化遭遇多重难关，AI技术成破局关键
           </h2>
           {section1.map((text, idx) => (
-            <p key={text} className="m-0 text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(22), lineHeight: r(34) }}>
+            <p key={text} className="m-0 text-justify text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(32), lineHeight: 1.6 }}>
               {text}
             </p>
           ))}
         </section>
 
         <section style={{ marginTop: r(26) }}>
-          <h2 className="m-0 font-semibold text-[#f96d01]" style={{ fontSize: r(24), lineHeight: r(31) }}>
+          <h2 className="m-0 font-semibold text-[#f96d01]" style={{ fontSize: r(32), lineHeight: 1.6 }}>
             “AI+聚变”跨界团队，推动核心技术落地
           </h2>
           {section2.map((text, idx) => (
-            <p key={text} className="m-0 text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(22), lineHeight: r(34) }}>
+            <p key={text} className="m-0 text-justify text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(32), lineHeight: 1.6 }}>
               {text}
             </p>
           ))}
         </section>
 
         <section style={{ marginTop: r(26) }}>
-          <h2 className="m-0 font-semibold text-[#f96d01]" style={{ fontSize: r(24), lineHeight: r(31) }}>
+          <h2 className="m-0 font-semibold text-[#f96d01]" style={{ fontSize: r(32), lineHeight: 1.6 }}>
             AI for Fusion 赛道加速，产业价值持续凸显
           </h2>
           {section3.map((text, idx) => (
-            <p key={text} className="m-0 text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(22), lineHeight: r(34) }}>
+            <p key={text} className="m-0 text-justify text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(32), lineHeight: 1.6 }}>
               {text}
             </p>
           ))}
         </section>
 
         <section style={{ marginTop: r(26) }}>
-          <h2 className="m-0 font-semibold text-[#f96d01]" style={{ fontSize: r(24), lineHeight: r(31) }}>
+          <h2 className="m-0 font-semibold text-[#f96d01]" style={{ fontSize: r(32), lineHeight: 1.6 }}>
             投资人说
           </h2>
           {investors.map((text, idx) => (
-            <p key={text} className="m-0 text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(22), lineHeight: r(34) }}>
+            <p key={text} className="m-0 text-justify text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(32), lineHeight: 1.6 }}>
               {text}
             </p>
           ))}
         </section>
       </section>
     </main>
+    </PageWithFooter>
   )
 }
 

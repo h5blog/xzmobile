@@ -1,8 +1,8 @@
+import PageWithFooter from '../components/PageWithFooter'
+import jobDetailBanner750Webp from '../images/job-detail-banner-750.webp'
+import jobDetailBannerWebp from '../images/job-detail-banner.webp'
+import jobDetailBannerPng from '../images/job-detail-banner.png'
 import { rem750 as r } from '../lib/rem750'
-
-const heroBg = 'http://localhost:3845/assets/11cbfa778a98e713209708aaca51fe8be979a957.png'
-const sectionDivider = 'http://localhost:3845/assets/6220c639b48218ef5f75f38a450b05aae1dbd886.svg'
-const resumeQr = 'http://localhost:3845/assets/dc63d745efb03890ab3a6b58aa036bc98d03fc94.png'
 const resumeLink = 'https://ecn5wfrohzj8.feishu.cn/share/base/form/shrcnBNsL5EtkP8DOQBKp6T3qac'
 
 type JobDetail = {
@@ -158,7 +158,10 @@ const jobDetails: Record<number, JobDetail> = {
 function SectionTitle({ text, topMargin }: { text: string; topMargin: number }) {
   return (
     <div style={{ marginTop: r(topMargin) }}>
-      <span className="inline-flex items-center bg-[#f96d01] px-[0.1067rem] font-semibold text-white" style={{ minHeight: r(44), fontSize: r(30), lineHeight: r(48) }}>
+      <span
+        className="inline-flex items-center bg-[#f96d01] px-[0.1067rem] font-semibold text-white"
+        style={{ minHeight: r(44), fontSize: r(30), lineHeight: 1.6 }}
+      >
         {text}
       </span>
     </div>
@@ -169,72 +172,108 @@ export default function JobDetailPage({ jobId }: { jobId: number }) {
   const job = jobDetails[jobId] ?? jobDetails[1]
 
   return (
-    <main className="w-full" style={{ background: '#f1f1f1' }}>
-      <section className="relative w-full" style={{ height: r(197) }}>
-        <img src={heroBg} alt="" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[rgba(249,109,1,0.9)] via-[rgba(249,109,1,0.53)] to-transparent" />
+    <PageWithFooter>
+    <main className="w-full" style={{ background: '#fff' }}>
+      <section className="relative w-full overflow-hidden" style={{ height: r(197), minHeight: r(197) }}>
+        <picture className="absolute inset-0 block h-full w-full min-w-0">
+          <source
+            type="image/webp"
+            srcSet={`${jobDetailBanner750Webp} 750w, ${jobDetailBannerWebp} 1500w`}
+            sizes="100vw"
+          />
+          <img
+            src={jobDetailBannerPng}
+            alt=""
+            className="h-full w-full object-cover"
+            width={1500}
+            height={394}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+          />
+        </picture>
       </section>
 
       <section style={{ paddingTop: r(29), paddingInline: r(47) }}>
-        <h1 className="m-0 font-semibold text-black" style={{ fontSize: r(32), lineHeight: r(40) }}>
+        <h1 className="m-0 font-semibold text-black" style={{ fontSize: r(32), lineHeight: 1.6 }}>
           {job.title}
         </h1>
-        <div style={{ marginTop: r(8), width: r(696), maxWidth: '100%', height: r(2) }}>
-          <img src={sectionDivider} alt="" className="h-full w-full object-fill" />
-        </div>
-
-        <SectionTitle text="岗位使命" topMargin={17} />
-        <p className="m-0 text-[#363636]" style={{ marginTop: r(8), fontSize: r(30), lineHeight: r(41) }}>
+        {/* Figma 792:332 Line 34 — 696×2px（稿面），相对正文区左右各扩 20px */}
+        <div
+          aria-hidden
+          className="block"
+          data-node-id="792:332"
+          style={{
+            marginTop: r(15),
+            marginLeft: r(-20),
+            marginRight: r(-20),
+            marginBottom: r(15),
+            width: `calc(100% + ${r(40)})`,
+            height: r(2),
+            backgroundColor: '#f96d01',
+          }}
+        />
+        <SectionTitle text="岗位使命" topMargin={9} />
+        <p className="m-0 text-[#363636]" style={{ marginTop: r(8), fontSize: r(30), lineHeight: 1.6,textAlign: 'justify' }}>
           {job.mission}
         </p>
 
         <SectionTitle text="岗位职责" topMargin={24} />
-        <div style={{ marginTop: r(8) }}>
+        <div className="flex flex-col" style={{ marginTop: r(8), gap: r(14) }}>
           {job.dutyLines.map((line) => (
-            <p key={line} className="m-0 text-[#363636]" style={{ fontSize: r(30), lineHeight: r(41), marginBottom: r(6) }}>
+            <p key={line} className="m-0 text-[#363636]" style={{ fontSize: r(30), lineHeight: 1.6,textAlign: 'justify' }}>
               {line}
             </p>
           ))}
         </div>
 
         <SectionTitle text="岗位要求" topMargin={30} />
-        <div style={{ marginTop: r(8) }}>
+        <div className="flex flex-col" style={{ marginTop: r(8), gap: r(14) }}>
           {job.requirementLines.map((line) => (
-            <p key={line} className="m-0 text-[#363636]" style={{ fontSize: r(30), lineHeight: r(41), marginBottom: r(6) }}>
+            <p key={line} className="m-0 text-[#363636]" style={{ fontSize: r(30), lineHeight: 1.6,textAlign: 'justify' }}>
               {line}
             </p>
           ))}
         </div>
 
         <SectionTitle text="优先条件" topMargin={30} />
-        <div style={{ marginTop: r(8) }}>
+        <div className="flex flex-col" style={{ marginTop: r(8), gap: r(14) }}>
           {job.preferredLines.map((line) => (
-            <p key={line} className="m-0 text-[#363636]" style={{ fontSize: r(30), lineHeight: r(41), marginBottom: r(6) }}>
+            <p key={line} className="m-0 text-[#363636]" style={{ fontSize: r(30), lineHeight: 1.6,textAlign: 'justify' }}>
               {line}
             </p>
           ))}
         </div>
 
         <SectionTitle text="岗位地点" topMargin={28} />
-        <p className="m-0 text-[#363636]" style={{ marginTop: r(8), marginBottom: r(44), fontSize: r(30), lineHeight: r(41) }}>
+        <p className="m-0 text-[#363636]" style={{ marginTop: r(8), marginBottom: r(44), fontSize: r(30), lineHeight: 1.6 }}>
           {job.location}
         </p>
 
-        <div className="relative overflow-hidden rounded-[0.32rem] bg-[#f96d01] text-white" style={{ marginBottom: r(34), minHeight: r(286), padding: `${r(28)} ${r(24)} ${r(24)}` }}>
-          <a href={resumeLink} target="_blank" rel="noreferrer" className="absolute font-semibold text-white underline" style={{ left: r(141), top: r(63), fontSize: r(40), lineHeight: r(30) }}>
-            网申链接
-          </a>
-          <p className="absolute m-0 whitespace-nowrap font-semibold text-white" style={{ left: r(201), top: r(128), fontSize: r(40), lineHeight: r(30) }}>
-            或
-          </p>
-          <p className="absolute m-0 whitespace-nowrap font-semibold text-white" style={{ left: r(97), top: r(193), fontSize: r(40), lineHeight: r(30) }}>
-            简历投递二维码
-          </p>
-          <div className="absolute grid place-items-center rounded-[0.2267rem] bg-white" style={{ left: r(465), top: r(51), width: r(178), height: r(178) }}>
-            <img src={resumeQr} alt="简历投递二维码" className="object-cover" style={{ width: r(152), height: r(156), borderRadius: r(14) }} />
-          </div>
-        </div>
+        <a
+          href={resumeLink}
+          target="_blank"
+          rel="noreferrer"
+          className="mx-auto flex items-center justify-center no-underline"
+          style={{
+            width: r(521),
+            maxWidth: '100%',
+            height: r(93),
+            borderRadius: r(24),
+            background: '#f96d01',
+            boxShadow: `0 ${r(5)} ${r(14)} 0 #f96d01`,
+            color: '#fff',
+            fontSize: r(40),
+            fontWeight: 600,
+            lineHeight: 1.6,
+            marginBottom: r(56),
+          }}
+          data-node-id="793:606"
+        >
+          立 即 投 递
+        </a>
       </section>
     </main>
+    </PageWithFooter>
   )
 }

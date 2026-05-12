@@ -1,5 +1,6 @@
+import NewsDetailBannerHero from '../components/NewsDetailBannerHero'
+import PageWithFooter from '../components/PageWithFooter'
 import { rem750 as r } from '../lib/rem750'
-
 const items: [string, string, string][] = [
   ['01', '国家战略', '国家发展改革委、国家能源局《关于推进“人工智能 +”能源高质量发展的实施意见》。'],
   ['02', '目标导向明确', '《实施意见》指出，要加快“人工智能 + 核电”应用场景赋能。'],
@@ -10,16 +11,12 @@ const items: [string, string, string][] = [
 
 function NewsDetailPage3() {
   return (
+    <PageWithFooter>
     <main className="w-full bg-white" style={{ paddingBottom: r(48) }}>
-      <section className="relative w-full" style={{ height: r(178) }}>
-        <img src="/news-detail-hero.png" alt="" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#f96d01] via-[rgba(249,109,1,0.53)] to-transparent" />
-        
-      </section>
+      <NewsDetailBannerHero />
 
       <section style={{ padding: `${r(32)} ${r(44)} 0` }}>
-        <h1 className="m-0 font-semibold text-black" style={{ fontSize: r(36), lineHeight: r(50) }}>
+        <h1 className="m-0 font-semibold text-black" style={{ fontSize: r(32), lineHeight: 1.6,paddingLeft: r(15) ,paddingRight: r(15)  }}>
           8月27日：《关于推进“人工智能 +”能源高质量发展的实施意见》
         </h1>
         <div className="w-full" style={{ marginTop: r(16), height: r(2), backgroundColor: '#f96d01' }} />
@@ -30,15 +27,15 @@ function NewsDetailPage3() {
             <div key={item[0]} className="grid items-start" style={{ gridTemplateColumns: `${r(57)} 1fr`, columnGap: r(12) }}>
               <div
                 className="grid place-items-center bg-[#f96d01] text-white"
-                style={{ width: r(57), height: r(57), fontSize: r(28), fontWeight: 600, lineHeight: r(30) }}
+                style={{ width: r(57), height: r(57), fontSize: r(32), fontWeight: 600, lineHeight: 1.6 }}
               >
                 {item[0]}
               </div>
               <div style={{ paddingTop: r(4) }}>
-                <p className="m-0 font-semibold text-black" style={{ fontSize: r(24), lineHeight: r(34) }}>
+                <p className="m-0 font-semibold text-black" style={{ fontSize: r(32), lineHeight: 1,marginBottom: r(10) }}>
                   {item[1]}
                 </p>
-                <p className="m-0 text-black" style={{ fontSize: r(24), lineHeight: r(34) }}>
+                <p className="m-0 text-black" style={{ fontSize: r(32), lineHeight: 1.6,textAlign: 'justify' }}>
                   {item[2]}
                 </p>
               </div>
@@ -47,6 +44,7 @@ function NewsDetailPage3() {
         </section>
       </section>
     </main>
+    </PageWithFooter>
   )
 }
 

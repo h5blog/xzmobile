@@ -1,5 +1,6 @@
+import NewsDetailBannerHero from '../components/NewsDetailBannerHero'
+import PageWithFooter from '../components/PageWithFooter'
 import { rem750 as r } from '../lib/rem750'
-
 const rows: [string, string, string, string][] = [
   [
     '2022',
@@ -15,16 +16,12 @@ const rows: [string, string, string, string][] = [
 
 function NewsDetailPage2() {
   return (
+    <PageWithFooter>
     <main className="w-full bg-white" style={{ paddingBottom: r(48) }}>
-      <section className="relative w-full" style={{ height: r(178) }}>
-        <img src="/news-detail-hero.png" alt="" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#f96d01] via-[rgba(249,109,1,0.53)] to-transparent" />
-        
-      </section>
+      <NewsDetailBannerHero />
 
       <section style={{ padding: `${r(28)} ${r(24)} 0` }}>
-        <h1 className="m-0 text-black" style={{ fontSize: r(52), lineHeight: 'normal', fontWeight: 600 }}>
+        <h1 className="m-0 text-black" style={{ fontSize: r(32), lineHeight: 1.6, fontWeight: 600,paddingLeft: r(15) ,paddingRight: r(15)  }}>
           中国核聚变相关政策时间线表格
         </h1>
         <div className="w-full" style={{ marginTop: r(26), height: r(2), backgroundColor: '#d59652' }} />
@@ -38,7 +35,7 @@ function NewsDetailPage2() {
               <p
                 key={head}
                 className="m-0 text-center font-semibold whitespace-pre-line"
-                style={{ fontSize: r(24), lineHeight: r(30), padding: `${r(30)} ${r(8)} ${r(26)}` }}
+                style={{ fontSize: r(32), lineHeight: 1.6, padding: `${r(30)} ${r(8)} ${r(26)}` }}
               >
                 {head}
               </p>
@@ -51,8 +48,8 @@ function NewsDetailPage2() {
                 <p
                   className="m-0 grid place-items-center font-semibold text-[#e2843c]"
                   style={{
-                    fontSize: r(24),
-                    lineHeight: r(30),
+                    fontSize: r(36),
+                    lineHeight: 1.6,
                     padding: `${r(20)} ${r(8)}`,
                     writingMode: 'vertical-rl',
                     textOrientation: 'upright',
@@ -63,19 +60,19 @@ function NewsDetailPage2() {
                 </p>
                 <p
                   className="m-0 text-black"
-                  style={{ fontSize: r(22), lineHeight: r(34), padding: `${r(20)} ${r(12)} ${r(18)}`, borderLeft: `${r(1)} solid #d1d1d1` }}
+                  style={{ fontSize: r(32), lineHeight: 1.6, padding: `${r(20)} ${r(12)} ${r(18)}`, borderLeft: `${r(1)} solid #d1d1d1` }}
                 >
                   {row[1]}
                 </p>
                 <p
                   className="m-0 text-black"
-                  style={{ fontSize: r(22), lineHeight: r(34), padding: `${r(20)} ${r(12)} ${r(18)}`, borderLeft: `${r(1)} solid #d1d1d1` }}
+                  style={{ fontSize: r(32), lineHeight: 1.6, padding: `${r(20)} ${r(12)} ${r(18)}`, borderLeft: `${r(1)} solid #d1d1d1` }}
                 >
                   {row[2]}
                 </p>
                 <p
                   className="m-0 text-black"
-                  style={{ fontSize: r(22), lineHeight: r(34), padding: `${r(20)} ${r(12)} ${r(18)}`, borderLeft: `${r(1)} solid #d1d1d1` }}
+                  style={{ fontSize: r(32), lineHeight: 1.6, padding: `${r(20)} ${r(12)} ${r(18)}`, borderLeft: `${r(1)} solid #d1d1d1` }}
                 >
                   {row[3]}
                 </p>
@@ -85,6 +82,7 @@ function NewsDetailPage2() {
         </section>
       </section>
     </main>
+    </PageWithFooter>
   )
 }
 

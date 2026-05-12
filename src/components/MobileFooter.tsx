@@ -1,4 +1,4 @@
-import { figmaHome } from '../images/figmaHome'
+import qrCode from '../images/qr-code.png'
 import { rem750 as r } from '../lib/rem750'
 
 function MobileFooter() {
@@ -6,24 +6,28 @@ function MobileFooter() {
     <footer
       className="w-full"
       style={{
-        padding: `${r(32)} ${r(60)} ${r(40)}`,
+        paddingTop: `${r(32)}`,
+        paddingBottom: `${r(40)}`,
         backgroundColor: '#252525',
         color: '#e8e8e8',
       }}
     >
-      <h2 className="m-0 font-medium" style={{ fontSize: r(40), lineHeight: 'normal', color: '#f96d01' }}>
+      <div style={{
+        paddingLeft: `${r(60)}`,
+        paddingRight: `${r(60)}`,
+      }}>
+      <h2 className="m-0 font-medium" style={{ fontSize: r(24), lineHeight: 1.6, color: '#f96d01' }}>
         公司地址
       </h2>
       <div
         className="w-full min-w-0"
-        style={{ marginTop: r(6), maxWidth: r(670), height: r(1), backgroundColor: '#595959' }}
+        style={{ marginTop: r(6), maxWidth: r(570), height: r(1), backgroundColor: '#595959' }}
       />
       <p
         className="m-0"
         style={{
-          marginTop: r(14),
-          fontSize: r(36),
-          lineHeight: 'normal',
+          fontSize: r(24),
+          lineHeight: 1.9,
           fontWeight: 500,
         }}
       >
@@ -32,15 +36,15 @@ function MobileFooter() {
 
       <h2
         className="m-0 font-medium"
-        style={{ marginTop: r(22), fontSize: r(40), lineHeight: 'normal', color: '#f96d01' }}
+        style={{ marginTop: r(22), fontSize: r(24), lineHeight: 1.6, color: '#f96d01' }}
       >
         联系方式
       </h2>
       <div
         className="w-full min-w-0"
-        style={{ marginTop: r(6), maxWidth: r(280), height: r(1), backgroundColor: '#595959' }}
+        style={{ marginTop: r(6), maxWidth: r(250), height: r(1), backgroundColor: '#595959' }}
       />
-      <p className="m-0" style={{ marginTop: r(12), fontSize: r(36), lineHeight: 'normal', fontWeight: 500 }}>
+      <p className="m-0" style={{ fontSize: r(24), lineHeight: 1.7, fontWeight: 500 }}>
         xzsd@xinzhu-ai.com.cn
       </p>
       <div
@@ -52,12 +56,12 @@ function MobileFooter() {
           marginTop: r(14),
         }}
       >
-        <img src={figmaHome.qr} alt="公众号" className="h-full w-full object-contain" />
+        <img src={qrCode} alt="公众号" className="h-full w-full object-contain" />
       </div>
 
       <h2
         className="m-0 font-medium"
-        style={{ marginTop: r(60), fontSize: r(40), lineHeight: 'normal', color: '#f96d01' }}
+        style={{ marginTop: r(60), fontSize: r(24), lineHeight: 1.6, color: '#f96d01' }}
       >
         关注我们
       </h2>
@@ -67,10 +71,11 @@ function MobileFooter() {
           marginTop: r(6),
         }}
       >
-        <div className="w-full min-w-0" style={{ maxWidth: r(500), height: r(1), backgroundColor: '#595959' }} />
-        <p className="m-0" style={{ marginTop: r(12), fontSize: r(36), lineHeight: 'normal', fontWeight: 500 }}>
+        <div className="w-full min-w-0" style={{ maxWidth: r(340), height: r(1), backgroundColor: '#595959' }} />
+        <p className="m-0" style={{ marginTop: r(12), fontSize: r(24), lineHeight: 1.6, fontWeight: 500 }}>
           扫描二维码关注新烛时代公众号
         </p>
+      </div>
       </div>
       <div
         className="w-full"
@@ -81,24 +86,24 @@ function MobileFooter() {
         <div className="w-full" style={{ height: r(1), backgroundColor: '#595959' }} />
         <p
           className="m-0 text-center"
-          style={{ marginTop: r(10), color: '#9c9c9c', fontSize: r(24), lineHeight: 'normal', fontWeight: 500 }}
+          style={{ marginTop: r(10), color: '#9c9c9c', fontSize: r(24), lineHeight: 1.6, fontWeight: 500 }}
         >
           ©2025 北京新烛时代科技有限公司 版权所有
         </p>
         <p
           className="m-0 text-center"
-          style={{ marginTop: r(2), color: '#9c9c9c', fontSize: r(24), lineHeight: 'normal', fontWeight: 500 }}
+          style={{ marginTop: r(2), color: '#9c9c9c', fontSize: r(24), lineHeight: 1.6, fontWeight: 500 }}
         >
           <a className="underline" href="http://beian.miit.gov.cn/" target="_blank" rel="noreferrer">
             京ICP备2025157244号-1
           </a>{' '}
           <a
             className="underline"
-            href="https://beian.mps.gov.cn/#/query/webSearch?code=31011402021678"
+            href="https://beian.mps.gov.cn/#/query/webSearch?code=11010802048377"
             target="_blank"
             rel="noreferrer"
           >
-            沪公网安备31011402021678号
+            京公网安备11010802048377号
           </a>
         </p>
       </div>
