@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "optimize:banner": "node scripts/optimize-banner.mjs",
+    "optimize:home-banner": "node scripts/optimize-home-banner.mjs",
     "optimize:home-tech-bg": "node scripts/optimize-home-tech-bg.mjs",
     "optimize:home-team-bg": "node scripts/optimize-home-team-bg.mjs",
     "optimize:matrix-resources": "node scripts/optimize-matrix-resources.mjs",

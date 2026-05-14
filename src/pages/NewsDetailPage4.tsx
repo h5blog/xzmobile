@@ -112,7 +112,7 @@ function NewsDetailPage4() {
                   />
                 </picture>
               </div>
-              <p className="m-0 text-black" style={{ marginTop: r(14), fontSize: r(32), lineHeight: 1.6,textAlign: 'justify' }}>
+              <p className="m-0 text-black" style={{ marginTop: r(14), fontSize: r(32), lineHeight: 1.6,textAlign: 'justify', textIndent: '2em' }}>
                 {item.desc}
               </p>
             </div>

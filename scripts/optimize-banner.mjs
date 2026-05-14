@@ -1,5 +1,5 @@
 /**
- * 从 src/images/banner.png 生成首页可用的压缩资源（WebP + JPEG 回退 + 可选窄屏 WebP）。
+ * 从 src/images/banner.png 生成旧版首页资源（首页已改用 home-banner + optimize-home-banner.mjs）。
  * 运行: node scripts/optimize-banner.mjs
  */
 import sharp from 'sharp'

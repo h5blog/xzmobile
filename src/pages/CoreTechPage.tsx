@@ -42,7 +42,7 @@ function CoreTechPage() {
         className="relative w-full overflow-hidden"
         style={{
           minHeight: r(2190),
-          paddingTop: r(62),
+          paddingTop: r(40),
           paddingLeft: r(40),
           paddingRight: r(40),
           paddingBottom: r(116),

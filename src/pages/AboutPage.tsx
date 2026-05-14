@@ -75,12 +75,12 @@ export default function AboutPage() {
         </picture>
       </section>
 
-      <section className="relative" style={{ padding: `0 ${r(64)} ${r(72)}` }}>
+      <section className="relative" style={{ padding: `${r(40)}  ${r(40)} ${r(0)}` }}>
         <p className="m-0 text-black" style={{ ...pIndent2, fontSize: r(32), lineHeight: 1.6,textAlign: 'justify', marginTop: r(8), letterSpacing: r(2.56) }}>
         <span className="font-semibold text-[#f96d01]">新烛时代 (XinZhuAI)</span>作为国内AI赋能可控核聚变的引领者，通过深度融合物理机理与人工智能技术，致力于打造服务全球聚变能源产业的通用“聚变智能体”。我们为全球聚变研究机构及商业公司提供涵盖设计、模拟到运维控制的全栈式AI解决方案，推动聚变研发从传统的“经验试错”向“智能预测与主动控制”变革，加速全人类迈向聚变能源新时代。
         </p>
         <div>
-          <picture className="block max-w-full" style={{ width: r(586),marginTop: r(15) }}>
+          <picture className="block max-w-full" style={{ width: r(586),margin: `${r(40)} auto` }}>
             <source
               type="image/webp"
               srcSet={`${ourTag1Webp1x} 586w, ${ourTag1Webp2x} 1172w`}
@@ -97,7 +97,7 @@ export default function AboutPage() {
               fetchPriority="high"
             />
           </picture>
-          <picture className="block max-w-full" style={{ width: r(596),marginTop: r(15) }}>
+          <picture className="block max-w-full" style={{ width: r(596),margin: `${r(20)} auto` }}>
             <source
               type="image/webp"
               srcSet={`${ourTag2Webp1x} 596w, ${ourTag2Webp2x} 1192w`}
@@ -114,7 +114,7 @@ export default function AboutPage() {
               fetchPriority="high"
             />
           </picture>
-          <picture className="block max-w-full" style={{ width: r(595),marginTop: r(15) }}>
+          <picture className="block max-w-full" style={{ width: r(595),margin: `${r(20)} auto`  }}>
             <source
               type="image/webp"
               srcSet={`${ourTag3Webp1x} 595w, ${ourTag3Webp2x} 1190w`}
@@ -133,7 +133,7 @@ export default function AboutPage() {
           </picture>
         </div>
 
-        <div style={{ marginTop: r(64) }}>
+        <div style={{ marginTop: r(40) }}>
           <p className="m-0 text-black" style={{ ...pIndent2, fontSize: r(32), lineHeight: 1.6,textAlign: 'justify',  letterSpacing: r(2.56) }}>
             如果说全球聚变公司正在建造性能强大的“CPU”裸机，新烛时代要做的，就是为所有聚变装置打造一个可移植、可扩展、可进化的“智能操作系统”。
           </p>
@@ -159,63 +159,62 @@ export default function AboutPage() {
 
         
       </section>
-      <div style={{ marginTop: r(64), paddingInline: 0 }}>
-          <div className="flex w-full justify-center" style={{ marginBlock: r(20) }}>
-            <picture>
-              <source
-                type="image/webp"
-                srcSet={`${gsjjIconWebp1x} 689w, ${gsjjIconWebp2x} 1378w`}
-                sizes="689px"
-              />
-              <img
-                src={gsjjIconPng}
-                alt=""
-                width={689}
-                height={348}
-                className="mx-auto block max-w-full bg-white object-contain"
-                style={{ width: r(689), height: r(348) }}
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
-          </div>
-          <div style={{paddingTop: r(30),margin: `0 auto`,  width: r(644), height: r(483) }}>
-            <picture className="block h-full w-full">
-              <source
-                type="image/webp"
-                srcSet={`${aboutImage1Webp1x} 644w, ${aboutImage1Webp2x} 1288w`}
-                sizes="644px"
-              />
-              <img
-                src={aboutImage1}
-                alt="办公环境"
-                width={644}
-                height={483}
-                className="block h-full w-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
-          </div>
-        </div>
-        <div style={{ paddingTop: r(20),paddingBottom: r(40),margin: `0 auto`, width: r(644), height: r(483) }}>
-          <picture className="block h-full w-full">
-            <source
-              type="image/webp"
-              srcSet={`${aboutImage2Webp1x} 644w, ${aboutImage2Webp2x} 1288w`}
-              sizes="644px"
-            />
-            <img
-              src={aboutImage2}
-              alt="办公环境"
-              width={644}
-              height={483}
-              className="block h-full w-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
-        </div>
+      
+      <div className="flex w-full justify-center" style={{ marginBlock: r(30) }}>
+        <picture>
+          <source
+            type="image/webp"
+            srcSet={`${gsjjIconWebp1x} 689w, ${gsjjIconWebp2x} 1378w`}
+            sizes="689px"
+          />
+          <img
+            src={gsjjIconPng}
+            alt=""
+            width={689}
+            height={348}
+            className="mx-auto block max-w-full bg-white object-contain"
+            style={{ width: r(689), height: r(348) }}
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </div>
+      <div style={{paddingTop: r(8),margin: `0 auto`,  width: r(644), height: r(483) }}>
+        <picture className="block h-full w-full">
+          <source
+            type="image/webp"
+            srcSet={`${aboutImage1Webp1x} 644w, ${aboutImage1Webp2x} 1288w`}
+            sizes="644px"
+          />
+          <img
+            src={aboutImage1}
+            alt="办公环境"
+            width={644}
+            height={483}
+            className="block h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </div>
+      <div style={{ paddingTop: r(20),paddingBottom: r(40),margin: `0 auto`, width: r(644), height: r(483) }}>
+        <picture className="block h-full w-full">
+          <source
+            type="image/webp"
+            srcSet={`${aboutImage2Webp1x} 644w, ${aboutImage2Webp2x} 1288w`}
+            sizes="644px"
+          />
+          <img
+            src={aboutImage2}
+            alt="办公环境"
+            width={644}
+            height={483}
+            className="block h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </div>
     </main>
     </PageWithFooter>
   )

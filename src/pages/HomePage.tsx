@@ -13,9 +13,9 @@ import homeTechBgWebp from '../images/home-tech-bg.webp'
 import homeTeamBgJpg from '../images/home-team-bg.jpg'
 import homeTeamBg750Webp from '../images/home-team-bg-750.webp'
 import homeTeamBgWebp from '../images/home-team-bg.webp'
-import bannerWebp750 from '../images/banner-750.webp'
-import bannerWebp from '../images/banner.webp'
-import bannerJpg from '../images/banner.jpg'
+import homeBanner750Webp from '../images/home-banner-750.webp'
+import homeBannerWebp from '../images/home-banner.webp'
+import homeBannerJpg from '../images/home-banner.jpg'
 import matrix2Png from '../images/matrix-2-resource1.png'
 import matrix2Webp from '../images/matrix-2-resource1.webp'
 import matrix3Png from '../images/matrix-3-resource2.png'
@@ -36,7 +36,7 @@ import { rem750 as r } from '../lib/rem750'
 /** 首屏 banner + 核心技术区背景：尽早 preload WebP（先于首帧 paint 排队） */
 function preloadHomeHeroWebp() {
   if (typeof document === 'undefined') return
-  for (const href of [bannerWebp750, homeTechBg750Webp]) {
+  for (const href of [homeBanner750Webp, homeTechBg750Webp]) {
     if (
       Array.from(document.querySelectorAll<HTMLLinkElement>('link[rel="preload"][as="image"]')).some(
         (l) => l.href === href,
@@ -90,16 +90,16 @@ function MatrixCardFigure({ webp, png }: { webp: string; png: string }) {
 const FOUNDER_AVATAR_PX = 255
 
 const founders: { name: string; role: string; png: string; webp: string }[] = [
-  { name: '张  伟', role: '首席执行官', png: teamWuguoPng, webp: teamWuguoWebp },
+  { name: '张  伟', role: '首席执行官', png: teamZhangweiPng, webp:  teamZhangweiWebp},
   { name: '汪  跃', role: '首席技术官', png: teamWangyuePng, webp: teamWangyueWebp },
-  { name: '吴  果', role: '首席运营官', png: teamZhangweiPng, webp: teamZhangweiWebp },
+  { name: '吴  果', role: '首席运营官', png: teamWuguoPng, webp: teamWuguoWebp },
   { name: '刘铁岩', role: '首席科学顾问', png: teamLiutieyanPng, webp: teamLiutieyanWebp },
 ]
 
 const resourceA = [
   { title: '技术创新与研发能力', desc: '获取顶尖的基础科学能力的加持，解决底层硬核问题。' },
-  { title: '共享科研设施', desc: '使用清华大学的实验室、专用设备和软件。' },
-  { title: '校友网络', desc: '接入庞大的清华校友网络，校友遍布各行各业，提供难以估量的帮助。' },
+  { title: '共享科研设施', desc: '使用中关村学院的实验室、专用设备和软件。' },
+  { title: '校友网络', desc: '接入庞大的中关村学院校友网络，校友遍布各行各业，提供难以估量的帮助。' },
 ]
 
 const resourceB = [
@@ -375,22 +375,22 @@ function HomePage() {
       <div
         className="w-full"
         style={{
-          minHeight: r(307),
-          aspectRatio: '750 / 307',
+          minHeight: r(310),
+          aspectRatio: '1500 / 620',
         }}
       >
         <picture>
           <source
             type="image/webp"
-            srcSet={`${bannerWebp750} 750w, ${bannerWebp} 1500w`}
+            srcSet={`${homeBanner750Webp} 750w, ${homeBannerWebp} 1500w`}
             sizes="100vw"
           />
           <img
             alt="Banner"
             className="block h-auto w-full object-contain"
-            src={bannerJpg}
-            width={750}
-            height={307}
+            src={homeBannerJpg}
+            width={1500}
+            height={620}
             loading="eager"
             fetchPriority="high"
             decoding="async"
@@ -435,7 +435,7 @@ function HomePage() {
           <p
             style={
               {
-                marginTop: r(315),
+                marginTop: r(300),
                 fontFamily: '"PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif',
                 fontWeight: 400,
                 fontStyle: 'normal',
@@ -482,7 +482,7 @@ function HomePage() {
           padding: `${r(40)} ${r(16)} ${r(24)}`,
         }}
       >
-        <h1 className="text-center" style={{ fontSize: r(36), fontWeight: 'bold', color: '#f96d01' }}>
+        <h1 className="text-center" style={{ marginBottom:r(20),fontSize: r(36), fontWeight: 'bold', color: '#f96d01' }}>
         创始团队
         </h1>
         <div

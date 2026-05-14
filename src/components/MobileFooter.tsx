@@ -1,4 +1,5 @@
 import qrCode from '../images/qr-code.png'
+import gongan from '../images/gongan.png'
 import { rem750 as r } from '../lib/rem750'
 
 function MobileFooter() {
@@ -96,16 +97,31 @@ function MobileFooter() {
         >
           <a className="underline" href="http://beian.miit.gov.cn/" target="_blank" rel="noreferrer">
             京ICP备2025157244号-1
-          </a>{' '}
+          </a>
+        </p>
+        <p
+          className="m-0 text-center"
+          style={{ marginTop: r(2), color: '#9c9c9c', fontSize: r(24), lineHeight: 1.6, fontWeight: 500 }}
+        >
           <a
-            className="underline"
+            className="inline-flex items-center justify-center underline"
+            style={{ gap: r(6) }}
             href="https://beian.mps.gov.cn/#/query/webSearch?code=11010802048377"
             target="_blank"
             rel="noreferrer"
           >
+            <img
+              src={gongan}
+              alt=""
+              className="shrink-0 object-contain"
+              style={{ width: r(26), height: r(26) }}
+              width={26}
+              height={26}
+              draggable={false}
+            />
             京公网安备11010802048377号
           </a>
-        </p>
+          </p>
       </div>
     </footer>
   )

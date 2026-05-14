@@ -53,6 +53,16 @@ function MobileHeader({ active = '首页', onNavigate }: MobileHeaderProps) {
   ] as const
 
   const orange = '#f96d01'
+
+  /** 与 ScrollToTopFab 一致的圆角描边箭头（viewBox 24×24） */
+  const menuChevronStroke = {
+    stroke: 'currentColor' as const,
+    strokeWidth: 2.2,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+    fill: 'none' as const,
+  }
+
   const menuBorder = {
     borderStyle: 'solid' as const,
     borderColor: orange,
@@ -79,29 +89,62 @@ function MobileHeader({ active = '首页', onNavigate }: MobileHeaderProps) {
           />
         </div>
         <div className="ml-auto" ref={menuButtonRef}>
-          {!menuOpen ? (
-            <button
-              type="button"
-              className="relative grid place-items-center rounded-[0.1333rem] border border-[#f96d01] bg-[#fffefe]"
-              style={{ width: r(79), height: r(49) }}
-              onClick={() => setMenuOpen(true)}
-              aria-label="打开菜单"
-            >
-              <span className="absolute bg-[#f96d01]" style={{ width: r(36), height: r(4), top: r(13) }} />
-              <span className="absolute bg-[#f96d01]" style={{ width: r(36), height: r(4), top: r(23) }} />
-              <span className="absolute bg-[#f96d01]" style={{ width: r(36), height: r(4), top: r(33) }} />
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="relative grid place-items-center border-0 bg-transparent text-[#f96d01]"
-              style={{ width: r(80), height: r(56), fontSize: r(66), lineHeight: 1 }}
-              onClick={() => setMenuOpen(false)}
-              aria-label="关闭菜单"
-            >
-              ×
-            </button>
-          )}
+          <button
+            type="button"
+            className="relative box-border flex items-center justify-end overflow-visible rounded-[0.1333rem] border-0 bg-[#fffefe] active:scale-[0.96] motion-reduce:active:scale-100"
+            style={{
+              width: r(79),
+              height: r(49),
+              transition: 'transform 0.15s ease-out',
+            }}
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? '关闭菜单' : '打开菜单'}
+          >
+            {/** 内层 36×24 容纳三横线，整层在 79×49（含边框）内 flex 居中；线距稿面 10px，收成 X 时 ±r(10) */}
+            <div className="relative shrink-0" style={{ width: r(36), height: r(24) }}>
+              <span
+                className="absolute left-0 rounded-full bg-[#f96d01] motion-reduce:transition-none"
+                style={{
+                  top: 0,
+                  width: r(36),
+                  height: r(4),
+                  transformOrigin: 'center',
+                  transition:
+                    'transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease',
+                  transform: menuOpen
+                    ? `translateY(${r(10)}) rotate(45deg)`
+                    : 'none',
+                }}
+              />
+              <span
+                className="absolute left-0 rounded-full bg-[#f96d01] motion-reduce:transition-none"
+                style={{
+                  top: r(10),
+                  width: r(36),
+                  height: r(4),
+                  transformOrigin: 'center',
+                  transition: 'transform 0.22s ease, opacity 0.18s ease',
+                  opacity: menuOpen ? 0 : 1,
+                  transform: menuOpen ? 'scaleX(0)' : 'none',
+                }}
+              />
+              <span
+                className="absolute left-0 rounded-full bg-[#f96d01] motion-reduce:transition-none"
+                style={{
+                  top: r(20),
+                  width: r(36),
+                  height: r(4),
+                  transformOrigin: 'center',
+                  transition:
+                    'transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease',
+                  transform: menuOpen
+                    ? `translateY(-${r(10)}) rotate(-45deg)`
+                    : 'none',
+                }}
+              />
+            </div>
+          </button>
         </div>
       </div>
       <div
@@ -205,17 +248,29 @@ function MobileHeader({ active = '首页', onNavigate }: MobileHeaderProps) {
                     {item.label}
                     {item.hasArrow && (
                       <span
-                        className="absolute"
+                        className="pointer-events-none absolute flex items-center justify-center"
                         style={{
-                          right: r(52),
+                          right: r(48),
                           top: '50%',
+                          width: r(40),
+                          height: r(40),
                           transform: 'translateY(-50%)',
-                          fontSize: r(62),
-                          lineHeight: 2,
                           color: isParentRowActive ? '#ffffff' : '#f2702b',
                         }}
+                        aria-hidden
                       >
-                        {isExpanded ? '∨' : '>'}
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          style={{ width: r(40), height: r(40) }}
+                        >
+                          {isExpanded ? (
+                            <path d="M6 10l6 6 6-6" {...menuChevronStroke} />
+                          ) : (
+                            <path d="M8 7l6 5-6 5" {...menuChevronStroke} />
+                          )}
+                        </svg>
                       </span>
                     )}
                   </button>

@@ -39,7 +39,7 @@ function NewsDetailPage5() {
         </h1>
         <div className="w-full" style={{ marginTop: r(16), height: r(2), backgroundColor: '#f96d01' }} />
 
-        <p className="m-0 text-justify text-black" style={{ marginTop: r(24), fontSize: r(24), lineHeight: 1.6 }}>
+        <p className="m-0 text-justify text-black" style={{ marginTop: r(24), fontSize: r(32), lineHeight: 1.6, textIndent: '2em' }}>
           近日，新烛时代宣布完成6000万元天使轮融资。本轮融资由中科创星、鼎峰科创联合领投，水木清华校友基金跟投，
           资金将主要用于核心技术研发、联合验证、平台建设及关键人才引进等，全力推动可控核聚变向商用化加速迈进。
         </p>
@@ -49,7 +49,7 @@ function NewsDetailPage5() {
             核聚变商业化遭遇多重难关，AI技术成破局关键
           </h2>
           {section1.map((text, idx) => (
-            <p key={text} className="m-0 text-justify text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(32), lineHeight: 1.6 }}>
+            <p key={text} className="m-0 text-justify text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(32), lineHeight: 1.6, textIndent: '2em' }}>
               {text}
             </p>
           ))}
@@ -60,7 +60,7 @@ function NewsDetailPage5() {
             “AI+聚变”跨界团队，推动核心技术落地
           </h2>
           {section2.map((text, idx) => (
-            <p key={text} className="m-0 text-justify text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(32), lineHeight: 1.6 }}>
+            <p key={text} className="m-0 text-justify text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(32), lineHeight: 1.6, textIndent: '2em' }}>
               {text}
             </p>
           ))}
@@ -71,7 +71,7 @@ function NewsDetailPage5() {
             AI for Fusion 赛道加速，产业价值持续凸显
           </h2>
           {section3.map((text, idx) => (
-            <p key={text} className="m-0 text-justify text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(32), lineHeight: 1.6 }}>
+            <p key={text} className="m-0 text-justify text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(32), lineHeight: 1.6, textIndent: '2em' }}>
               {text}
             </p>
           ))}
@@ -82,7 +82,7 @@ function NewsDetailPage5() {
             投资人说
           </h2>
           {investors.map((text, idx) => (
-            <p key={text} className="m-0 text-justify text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(32), lineHeight: 1.6 }}>
+            <p key={text} className="m-0 text-justify text-black" style={{ marginTop: idx === 0 ? r(10) : r(8), fontSize: r(32), lineHeight: 1.6, textIndent: '2em' }}>
               {text}
             </p>
           ))}

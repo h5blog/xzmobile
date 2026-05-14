@@ -5,7 +5,6 @@ import jobBanner750Webp from '../images/job-banner-750.webp'
 import jobBannerWebp from '../images/job-banner.webp'
 import jobBannerPng from '../images/job-banner.png'
 import { rem750 as r } from '../lib/rem750'
-import jobQr from '../images/job-qr.png'
 import jobCompany1 from '../images/job-company1.png'
 import jobCompany1Webp1x from '../images/job-company1-660.webp'
 import jobCompany1Webp2x from '../images/job-company1-2x.webp'
@@ -75,8 +74,6 @@ const jobs = [
     loc: '北京',
   },
 ] as const
-
-const resumeLink = 'https://ecn5wfrohzj8.feishu.cn/share/base/form/shrcnBNsL5EtkP8DOQBKp6T3qac'
 
 const perks = [
   { title: '竞争力薪酬', lines: ['提供富有竞争力的薪酬，', '包含基础工资、年终奖；'] },
@@ -324,49 +321,6 @@ function JoinUsPage() {
         </div>
       </section>
 
-      {/* 网申 + 二维码 */}
-      <section className="w-full min-w-0" style={{ padding: `0 ${r(16)} ${r(48)}` }}>
-        <div
-          className="mx-auto flex items-center justify-between bg-[#f96d01] shadow-[0_4px_11px_0_rgba(249,109,1,0.55)]"
-          style={{
-            width: r(623),
-            maxWidth: '100%',
-            minHeight: r(171),
-            borderRadius: r(24),
-            padding: `${r(24)} ${r(40)} ${r(24)} ${r(48)}`,
-          }}
-        >
-          <div className="min-w-0 text-white">
-            <a
-              href={resumeLink}
-              target="_blank"
-              rel="noreferrer"
-              className="block font-semibold text-white underline"
-              style={{ fontSize: r(32), lineHeight: 1.6 }}
-            >
-              网申链接
-            </a>
-            <p className="m-0 font-semibold" style={{ marginTop: r(6), fontSize: r(32), lineHeight: 1.6 }}>
-              或
-            </p>
-            <p className="m-0 font-semibold" style={{ marginTop: r(6), fontSize: r(32), lineHeight: 1.6 }}>
-              简历投递二维码
-            </p>
-          </div>
-          <div
-            className="grid shrink-0 place-items-center rounded-[0.2267rem] bg-white"
-            style={{ width: r(127), height: r(127), borderRadius: r(17) }}
-          >
-            <img
-              src={jobQr}
-              alt="简历投递二维码"
-              className="object-cover"
-              style={{ width: r(109), height: r(111), borderRadius: r(14) }}
-            />
-          </div>
-        </div>
-      </section>
-
       {/* 办公环境 */}
       <section className="w-full min-w-0" style={{ padding: `0 ${r(45)} ${r(56)}` }}>
         <div className="mx-auto w-full min-w-0" style={{ width: r(660), maxWidth: '100%' }}>
@@ -417,7 +371,7 @@ function JoinUsPage() {
           {jobs.map((job) => (
             <article
               key={job.id}
-              className="mx-auto w-full cursor-pointer bg-white"
+              className="mx-auto w-full cursor-pointer bg-white shadow-[0_1px_3px_0_rgba(0,0,0,0.12)]"
               style={{
                 maxWidth: r(719),
                 marginBottom: r(24),
