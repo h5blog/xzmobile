@@ -12,17 +12,29 @@ type MobileHeaderProps = {
  */
 function MobileHeader({ active = '首页', onNavigate }: MobileHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [productOpen, setProductOpen] = useState(true)
-  const [aboutOpen, setAboutOpen] = useState(true)
+  const [productOpen, setProductOpen] = useState(false)
+  const [aboutOpen, setAboutOpen] = useState(false)
   const menuButtonRef = useRef<HTMLDivElement | null>(null)
   const menuPanelRef = useRef<HTMLDivElement | null>(null)
+
+  const closeMenu = () => {
+    setProductOpen(false)
+    setAboutOpen(false)
+    setMenuOpen(false)
+  }
+
+  const openMenu = () => {
+    setProductOpen(false)
+    setAboutOpen(false)
+    setMenuOpen(true)
+  }
 
   useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
       const target = e.target as Node
       const clickOnButton = menuButtonRef.current?.contains(target) ?? false
       const clickOnPanel = menuPanelRef.current?.contains(target) ?? false
-      if (!clickOnButton && !clickOnPanel) setMenuOpen(false)
+      if (!clickOnButton && !clickOnPanel) closeMenu()
     }
     document.addEventListener('mousedown', onDocClick)
     return () => document.removeEventListener('mousedown', onDocClick)
@@ -97,7 +109,7 @@ function MobileHeader({ active = '首页', onNavigate }: MobileHeaderProps) {
               height: r(49),
               transition: 'transform 0.15s ease-out',
             }}
-            onClick={() => setMenuOpen((open) => !open)}
+            onClick={() => (menuOpen ? closeMenu() : openMenu())}
             aria-expanded={menuOpen}
             aria-label={menuOpen ? '关闭菜单' : '打开菜单'}
           >
@@ -170,7 +182,7 @@ function MobileHeader({ active = '首页', onNavigate }: MobileHeaderProps) {
             height: `calc(100dvh - ${r(96)})`,
             background: 'rgba(13,5,5,0.63)',
           }}
-          onClick={() => setMenuOpen(false)}
+          onClick={closeMenu}
         />
         <div
           ref={menuPanelRef}
@@ -241,7 +253,7 @@ function MobileHeader({ active = '首页', onNavigate }: MobileHeaderProps) {
                         setAboutOpen((prev) => !prev)
                         return
                       }
-                      setMenuOpen(false)
+                      closeMenu()
                       onNavigate?.(item.value)
                     }}
                   >
@@ -306,7 +318,7 @@ function MobileHeader({ active = '首页', onNavigate }: MobileHeaderProps) {
                             borderBottomWidth: 0,
                           }}
                           onClick={() => {
-                            setMenuOpen(false)
+                            closeMenu()
                             onNavigate?.('核心技术')
                           }}
                         >
@@ -350,7 +362,7 @@ function MobileHeader({ active = '首页', onNavigate }: MobileHeaderProps) {
                                 borderBottomWidth: r(2),
                               }}
                               onClick={() => {
-                                setMenuOpen(false)
+                                closeMenu()
                                 onNavigate?.(sub.value)
                               }}
                             >
