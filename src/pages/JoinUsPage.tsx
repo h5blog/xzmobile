@@ -23,9 +23,6 @@ import jobPerk5Png from '../images/job-perk-icon-5.png'
 import jobPerk5Webp from '../images/job-perk-icon-5.webp'
 import jobPerk6Png from '../images/job-perk-icon-6.png'
 import jobPerk6Webp from '../images/job-perk-icon-6.webp'
-import jobIconPng from '../images/job-icon.png'
-import jobIconWebp1x from '../images/job-icon-235.webp'
-import jobIconWebp2x from '../images/job-icon-2x.webp'
 import jobSteps619Webp from '../images/job-steps-619.webp'
 import jobSteps2xWebp from '../images/job-steps-2x.webp'
 import jobStepsPng from '../images/job-steps.png'
@@ -75,95 +72,65 @@ const jobs = [
   },
 ] as const
 
+/** 薪酬福利：Figma 1328:176，2×3 网格卡片，图标稿面 58px */
+const PERK_ICON_W = 58
+
 const perks = [
-  { title: '竞争力薪酬', lines: ['提供富有竞争力的薪酬，', '包含基础工资、年终奖；'] },
-  { title: '全面保障', lines: ['六险一金、年度体检、', '带薪年假、北京户口；'] },
-  { title: '福利体系', lines: ['包含餐费补贴、交通补贴、', '节日福利、探亲补贴；'] },
-  { title: '成长支持', lines: ['顶级导师指导、参与前沿项目、', '鼓励发表论文与专利申请；'] },
-  { title: '文化氛围', lines: ['扁平管理、丰富的团建活动', '与节日福利；'] },
-  { title: '实习待遇', lines: ['提供有竞争力的实习津贴', '及转正优先权；'] },
+  {
+    title: '竞争力薪酬',
+    desc: '提供富有竞争力的薪酬，包含基础工资、年终奖；',
+    icon: { png: jobPerk1Png, webp: jobPerk1Webp },
+  },
+  {
+    title: '全面保障',
+    desc: '六险一金、年度体检、带薪年假、北京户口；',
+    icon: { png: jobPerk2Png, webp: jobPerk2Webp },
+  },
+  {
+    title: '福利体系',
+    desc: '包含餐费补贴、交通补贴、节日福利、探亲补贴；',
+    icon: { png: jobPerk3Png, webp: jobPerk3Webp },
+  },
+  {
+    title: '成长支持',
+    desc: '顶级导师指导、参与前沿项目、鼓励发表论文与专利申请；',
+    icon: { png: jobPerk4Png, webp: jobPerk4Webp },
+  },
+  {
+    title: '文化氛围',
+    desc: '扁平管理、丰富的团建活动与节日福利；',
+    icon: { png: jobPerk5Png, webp: jobPerk5Webp },
+  },
+  {
+    title: '实习待遇',
+    desc: '提供有竞争力的实习津贴及转正优先权；',
+    icon: { png: jobPerk6Png, webp: jobPerk6Webp },
+  },
 ] as const
 
-/** 薪酬福利卡片：三圆角 50px（稿），渐变底（对齐 Figma） */
-const perkCardRadius: CSSProperties[] = [
-  { borderTopLeftRadius: r(50), borderTopRightRadius: r(50), borderBottomLeftRadius: r(50) },
-  { borderTopLeftRadius: r(50), borderTopRightRadius: r(50), borderBottomRightRadius: r(50) },
-  { borderTopLeftRadius: r(50), borderTopRightRadius: r(50), borderBottomRightRadius: r(50) },
-  { borderTopLeftRadius: r(50), borderTopRightRadius: r(50), borderBottomRightRadius: r(50) },
-  { borderTopLeftRadius: r(50), borderTopRightRadius: r(50), borderBottomRightRadius: r(50) },
-  { borderTopLeftRadius: r(50), borderTopRightRadius: r(50), borderBottomLeftRadius: r(50) },
-]
-
-const perkGradients = [
-  'linear-gradient(237deg, rgb(255,255,255) 17%, rgb(213,213,213) 102%)',
-  'linear-gradient(241deg, rgb(255,255,255) 4%, rgb(213,213,213) 116%)',
-  'linear-gradient(240deg, rgb(255,255,255) 3%, rgb(213,213,213) 104%)',
-  'linear-gradient(238deg, rgb(255,255,255) 7%, rgb(213,213,213) 102%)',
-  'linear-gradient(63deg, rgb(255,255,255) 0%, rgb(213,213,213) 100%)',
-  'linear-gradient(59deg, rgb(255,255,255) 0%, rgb(213,213,213) 90%)',
-] as const
-
-/** 薪酬福利装饰图：Figma 750 稿坐标换算为内容区（减 38 边距）；1096:1757 起与各节点裁剪一致 */
-const perkDecorAssets = [
-  { png: jobPerk1Png, webp: jobPerk1Webp },
-  { png: jobPerk2Png, webp: jobPerk2Webp },
-  { png: jobPerk3Png, webp: jobPerk3Webp },
-  { png: jobPerk4Png, webp: jobPerk4Webp },
-  { png: jobPerk5Png, webp: jobPerk5Webp },
-  { png: jobPerk6Png, webp: jobPerk6Webp },
-] as const
-
-const perkDecorLayout = [
-  { left: 289, top: -31, w: 129, h: 125, img: { w: '180.89%', h: '136.93%', l: '-27.11%', t: '-21.28%' } },
-  { left: 559, top: -16, w: 108, h: 112, img: { w: '200.59%', h: '142.5%', l: '-31.62%', t: '-26.6%' } },
-  { left: 282, top: -27, w: 110, h: 119, img: { w: '179.23%', h: '120.75%', l: '-27.69%', t: '-8.6%' } },
-  { left: 557, top: -29, w: 93, h: 101, img: { w: '211.2%', h: '143.09%', l: '-36.86%', t: '-27.88%' } },
-  { left: 310, top: -30, w: 107, h: 118, img: { w: '199.53%', h: '132.2%', l: '-32.01%', t: '-20.34%' } },
-  { left: 554, top: -30, w: 121, h: 118, img: { w: '184.36%', h: '138.14%', l: '-27.3%', t: '-25.42%' } },
-] as const
-
-function PerkDecorIcon({
+function PerkCardIcon({
   png,
   webp,
-  left,
-  top,
-  w,
-  h,
-  imgPct,
+  eager,
 }: {
   png: string
   webp: string
-  left: number
-  top: number
-  w: number
-  h: number
-  imgPct: { w: string; h: string; l: string; t: string }
+  eager?: boolean
 }) {
-  const imgStyle: CSSProperties = {
-    width: imgPct.w,
-    height: imgPct.h,
-    left: imgPct.l,
-    top: imgPct.t,
-    maxWidth: 'none',
-    maxHeight: 'none',
-  }
   return (
-    <div
-      className="pointer-events-none absolute z-[2] overflow-hidden"
-      style={{ left: r(left), top: r(top), width: r(w), height: r(h) }}
-    >
-      <picture className="relative block size-full">
-        <source type="image/webp" srcSet={webp} />
-        <img
-          src={png}
-          alt=""
-          className="absolute max-w-none"
-          style={imgStyle}
-          loading="lazy"
-          decoding="async"
-        />
-      </picture>
-    </div>
+    <picture className="mx-auto block shrink-0" style={{ width: r(PERK_ICON_W) }}>
+      <source type="image/webp" srcSet={webp} sizes={`${PERK_ICON_W}px`} />
+      <img
+        src={png}
+        alt=""
+        width={PERK_ICON_W * 2}
+        height={PERK_ICON_W * 2}
+        className="block h-auto w-full object-contain"
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchPriority={eager ? 'high' : undefined}
+      />
+    </picture>
   )
 }
 
@@ -219,82 +186,41 @@ function JoinUsPage() {
         </picture>
       </section>
 
-      {/* 薪酬福利（含 Figma 1096:1687 顶部品牌装饰） */}
+      {/* 薪酬福利：Figma 1328:176，2×3 白卡片网格 */}
       <section className="w-full min-w-0" style={{ padding: `${r(66)} ${r(38)} ${r(48)}` }}>
-        <div className="relative w-full min-w-0">
-          <SectionTitle>薪酬福利</SectionTitle>
-          <div
-            className="pointer-events-none absolute z-0"
-            style={{ right: r(32), top: r(88), width: r(235), height: r(235) }}
-            aria-hidden
-          >
-            <picture className="block h-full w-full overflow-hidden">
-              <source
-                type="image/webp"
-                srcSet={`${jobIconWebp1x} 235w, ${jobIconWebp2x} 470w`}
-                sizes="235px"
-              />
-              <img
-                src={jobIconPng}
-                alt=""
-                width={235}
-                height={235}
-                className="h-full w-full object-cover"
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-              />
-            </picture>
-          </div>
-          <div className="relative z-[2] w-full min-w-0" style={{ marginTop: r(40) }}>
-          {perks.map((perk, i) => {
-            const decor = perkDecorLayout[i]
-            const assets = perkDecorAssets[i]
-            return (
-              <div
-                key={perk.title}
-                className="relative w-full min-w-0"
-                style={{ marginTop: i === 0 ? 0 : r(28), minHeight: r(191) }}
+        <SectionTitle>薪酬福利</SectionTitle>
+        <div
+          className="mx-auto grid w-full min-w-0 grid-cols-2"
+          style={{
+            marginTop: r(40),
+            maxWidth: r(674),
+            gap: `${r(24)} ${r(22)}`,
+          }}
+        >
+          {perks.map((perk, i) => (
+            <article
+              key={perk.title}
+              className="flex min-w-0 flex-col items-center bg-white text-center shadow-[0_0_13px_0_#e8e8e8]"
+              style={{
+                borderRadius: r(16),
+                padding: `${r(28)} ${r(18)} ${r(24)}`,
+              }}
+            >
+              <PerkCardIcon png={perk.icon.png} webp={perk.icon.webp} eager={i < 2} />
+              <h3
+                className="m-0 w-full font-semibold text-[#f96d01]"
+                style={{ marginTop: r(16), fontSize: r(28), lineHeight: 1.4 }}
               >
-                <PerkDecorIcon
-                  png={assets.png}
-                  webp={assets.webp}
-                  left={decor.left}
-                  top={decor.top}
-                  w={decor.w}
-                  h={decor.h}
-                  imgPct={decor.img}
-                />
-                <div
-                  className={`relative z-[1] flex w-full min-w-0 ${i % 2 === 0 ? 'justify-start' : 'justify-end'}`}
-                  style={{
-                    paddingLeft: i % 2 === 0 ? r(24) : 0,
-                    paddingRight: i % 2 === 1 ? r(24) : 0,
-                  }}
-                >
-                  <div
-                    className="box-border border border-solid border-white shadow-[0_0_13px_0_#e8e8e8]"
-                    style={{
-                      width: r(369),
-                      maxWidth: '100%',
-                      minHeight: r(191),
-                      padding: `${r(34)} ${r(36)} ${r(28)}`,
-                      backgroundImage: perkGradients[i],
-                      ...perkCardRadius[i],
-                    }}
-                  >
-                    <p className="m-0 font-semibold text-[#f96d01]" style={{ fontSize: r(32), lineHeight: 1.6 }}>
-                      {perk.title}
-                    </p>
-                    <p className="m-0 text-[#373737]" style={{ marginTop: r(22), fontSize: r(30), lineHeight: 1.5,textAlign: 'justify' }}>
-                      {perk.lines.join('')}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-          </div>
+                {perk.title}
+              </h3>
+              <p
+                className="m-0 w-full text-[#373737]"
+                style={{ marginTop: r(12), fontSize: r(24), lineHeight: 1.5 }}
+              >
+                {perk.desc}
+              </p>
+            </article>
+          ))}
         </div>
       </section>
 

@@ -3,7 +3,7 @@ import jobDetailBanner750Webp from '../images/job-detail-banner-750.webp'
 import jobDetailBannerWebp from '../images/job-detail-banner.webp'
 import jobDetailBannerPng from '../images/job-detail-banner.png'
 import { rem750 as r } from '../lib/rem750'
-const resumeLink = 'https://ecn5wfrohzj8.feishu.cn/share/base/form/shrcnBNsL5EtkP8DOQBKp6T3qac'
+const resumeLink = 'https://ecn5wfrohzj8.feishu.cn/share/base/form/shrcnOwTBQEI0iVlttbdCqCEPxh'
 
 type JobDetail = {
   title: string

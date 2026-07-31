@@ -551,7 +551,7 @@ function HomePage() {
         </div>
       </div>
 
-      <section
+      {/* <section
         className="w-full"
         style={{
           paddingTop: r(25),
@@ -569,35 +569,35 @@ function HomePage() {
             className="grid place-items-center"
             style={{
               borderRadius: r(23),
-              // backgroundColor: '#fff',
+              backgroundColor: '#fff',
               minHeight: r(96),
               padding: r(8),
             }}
           >
             <div style={{ width: r(216), height: r(70), overflow: 'hidden' }}>
-              {/* <img
+              <img
                 src="/partner-tsinghua.png"
                 alt="清华大学"
                 className="h-full w-full object-contain"
                 style={{ display: 'block' }}
-              /> */}
+              />
             </div>
           </div>
           <div
             className="grid place-items-center"
             style={{
               borderRadius: r(23),
-              // backgroundColor: '#fff',
+              backgroundColor: '#fff',
               minHeight: r(96),
               padding: r(8),
             }}
           >
             <div style={{ width: r(267), height: r(78), overflow: 'hidden' }}>
-              {/* <img src="/partner-zgc-academy.png" alt="北京中关村学院" className="h-full w-full object-contain" style={{ display: 'block' }} /> */}
+              <img src="/partner-zgc-academy.png" alt="北京中关村学院" className="h-full w-full object-contain" style={{ display: 'block' }} />
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <div className="w-full" style={{ backgroundColor: '#252525', paddingBottom: r(40) }}>
         <h1 className="text-center" style={{ fontSize: r(36), fontWeight: 'bold', color: '#f96d01', paddingTop: r(40), paddingBottom: r(40) }}>
